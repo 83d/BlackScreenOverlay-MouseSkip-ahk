@@ -20,13 +20,13 @@ if (monitorCount < 2) {
     ExitApp
 }
 
-; 选择最靠右的非主显示器作为屏幕2
+; 选择位于主屏左侧、最靠左的非主显示器作为屏幕2
 targetIndex := 0
-targetLeft := -2147483648
+targetLeft := 2147483647
 Loop monitorCount {
     i := A_Index
     MonitorGet(i, &left, &top, &right, &bottom)
-    if (i != primary && left > targetLeft) {
+    if (i != primary && left < targetLeft) {
         targetIndex := i
         targetLeft := left
         targetTop := top
@@ -102,6 +102,7 @@ previousX := 0
 }
 
 ^!F12::ExitApp
+
 
 
 
