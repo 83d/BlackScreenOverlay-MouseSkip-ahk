@@ -67,7 +67,7 @@ if (showBlack)
     ShowOverlay()
 
 SetTimer(WatchMouse, 10)
-TrayTip("屏幕死区已启动", "屏幕2右侧 " deadW "px 已遮黑，鼠标会退回黑区左侧。`nCtrl+Alt+F11 切换黑框 | Ctrl+Alt+F12 退出", 1)
+TrayTip("屏幕死区已启动", "屏幕2右侧 " deadW "px 已遮黑，鼠标会跳过到另一侧。`nCtrl+Alt+F11 切换黑框 | Ctrl+Alt+F12 退出", 1)
 
 WatchMouse() {
     global deadL, deadR, deadT, deadB, previousX
@@ -102,6 +102,7 @@ previousX := 0
 }
 
 ^!F12::ExitApp
+
 
 
 
