@@ -75,16 +75,10 @@ WatchMouse() {
 
     ; 只在“跨入”黑区时跳转，避免定时器反复处理同一次跳转。
     if (x >= deadL && x < deadR && y >= deadT && y < deadB) {
-        if (previousX < deadL) {
-            ; 主屏幕 -> 屏幕2：从屏幕2可见区域进入黑区时退回左侧
-            MouseMove(deadL - 1, y, 0)
-            previousX := deadL - 1
+        if (previousX < deadL) {`r`n            ; 屏幕2可见区域 -> 黑区：跳过黑区到主屏右侧`r`n            MouseMove(deadR + 1, y, 0)`r`n            previousX := deadR + 1
             return
         }
-        if (previousX >= deadR) {
-            ; 屏幕2右侧 -> 黑区：从黑区跳到屏幕2内部
-            MouseMove(deadL - 1, y, 0)
-            previousX := deadL - 1
+        if (previousX >= deadR) {`r`n            ; 主屏 -> 黑区：跳过黑区到屏幕2可见区域`r`n            MouseMove(deadL - 1, y, 0)`r`n            previousX := deadL - 1
             return
         }
     }
@@ -102,6 +96,7 @@ previousX := 0
 }
 
 ^!F12::ExitApp
+
 
 
 
